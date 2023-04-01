@@ -8,26 +8,53 @@
 
 nav{
     padding: 0 5%;
+    border-bottom: 1px solid #AEC2B6;
+    border-width: 75%;
 }
 
 .menu{
     display: flex;
     -ms-flex-flow: row;
     justify-content: space-between;
+    text-align: center;
+}
+
+.menu a{
+    display: block;
+    padding: 1rem;
+}
+
+.menu a:hover{
+    border-radius: 5%;
+    color: #fff;
+    background-color: #94AF9F;
 }
 
 /** Cuerpo del sitio **/
 .body{
     padding: 0 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid #AEC2B6;
+    border-width: 75%;
 }
 
 .contenedor{
-    display: flex;
-    -ms-flex-flow: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5%;
 }
 
 main{
+    grid-column: 1 / 3;
+    padding: 10% 0;
+    text-align: center;
+    background-color: #BBD6B8;
+}
+
+aside{
+    padding: 10% 0;
+    background-color: #DBE4C6;
     text-align: center;
 }
 
@@ -44,4 +71,5 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid #AEC2B6;
 }
