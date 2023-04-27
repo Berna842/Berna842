@@ -1,0 +1,15 @@
+El listado de capacidades básicas que se tienen previstas para este modulo son:
+  - Estado de resultados
+  - Estado de flujos de efectivo
+  - Balance general
+  - Despliegue y seguimiento de cuentas por cobrar
+  - Despliegue y seguimiento de cuentas por pagar
+  - Generación manual de facturas
+  - Visualización de facturas
+  - Revisión de Activos
+  - Revisión de Pasivos
+  - Revisión de Patrimonio
+  - Valores historicos del mobiliario
+  - Presupuestos para los departamentos
+  - Compra de inventarios
+  - Nóminas (Modulo relacionado con Recursos Humanos)

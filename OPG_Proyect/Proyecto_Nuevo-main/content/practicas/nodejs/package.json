@@ -1,0 +1,15 @@
+{
+  "name": "base-new_proyect",
+  "version": "1.0.0",
+  "description": "Tabla de multiplicar con archivo de texto",
+  "main": "new_proyect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Berna",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.5.1"
+  }
+}

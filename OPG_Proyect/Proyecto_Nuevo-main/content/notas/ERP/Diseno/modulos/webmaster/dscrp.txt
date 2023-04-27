@@ -1,0 +1,7 @@
+El listado de capacidades básicas que se tienen previstas para este modulo son:
+  - Administración de servidor web
+  - Administración del contenido de los sitios web
+  - Administración de los correos electronicos.
+  - Revisión de las versiones del software.
+  - Administración de los recursos de los sitios.
+  - Administración de los respaldos.

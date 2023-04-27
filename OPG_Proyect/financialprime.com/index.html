@@ -12,26 +12,135 @@
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
-        <nav>
-            <div class="navigator">
-                <picture>
-                    <p>logo</p>
-                </picture>
-                <ul class="menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-        </nav>
+        <header class="header">
+            <nav class="contenedor-nav">
+                <h1 class="nombre-sitio">Financial <span>Prime</span></h1>
+                <div class="menu">
+                    <a href="#services">Services</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </nav>
+        </header>
 
-        <main>
-            <div class="container">
-                <p>If it make Dollars It make sense</p>
-            </div>
+        <main class="main container">
+            <h2 class="texto-main">If it make Dollars It makes make sense </h2>
+            <picture class="principal-img">
+                <img src="./imgs/dolars_1.jpg" alt="Dollars">
+            </picture>
         </main>
+
+        <section class="container services">
+            <h2 class="text-center texto-main">Our Services</h2>
+            <div class="list-services">
+                <div class="service">
+                    <picture>
+                        <img src="./imgs/invest.png" alt="Grow your money" srcset="">
+                    </picture>
+                    <a href="#">Investments</a>
+                </div>
+                <div class="service">
+                    <picture>
+                        <img src="./imgs/make_money.jpg" alt="Grow your money" srcset="">
+                    </picture>
+                    <a href="#">Saving Accounts</a>
+                </div>
+                <div class="service">
+                    <picture>
+                        <img src="./imgs/retirement.png" alt="Grow your money" srcset="">
+                    </picture>
+                    <a href="#">Retirement Accounts</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container about">
+            <h2 class="text-center texto-main">Our professionals</h2>
+            <div class="about-content">
+                <picture>
+                    <img src="./imgs/company.jpg" alt="Grow your money" srcset="">
+                </picture>
+                <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo modi nesciunt saepe obcaecati labore commodi cum, quo incidunt aspernatur, placeat vel sunt! Quas, officia placeat numquam quaerat alias illo aliquam.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <form action="#" method="post" class="formulario">
+                <fieldset>
+                    <legend>Your data</legend>
+                    
+                    <div class="campo">
+                        <label for="nombre">Name:</label>
+                        <input value="" id="nombre" type="text" placeholder="Your name" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="asunto">Asunto:</label>
+                        <input value="" id="asunto" type="text" placeholder="Tu Asunto" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">Email:</label>
+                        <input value="" id="email" type="email" placeholder="Your Email" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="tel">Phone:</label>
+                        <input value="" id="tel" type="tel" placeholder="Your Phone" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensaje">Message:</label>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Country</legend>
+                    <div class="campo">
+                        <label for="pais">Country</label>
+                        
+                        <select name="" id="pais">
+                            <option value="">-- Select --</option>
+                            <option value="USA">Unated States of America</option>
+                            <option value="MX">México</option>
+                            <option value="PR">Perú</option>
+                            <option value="CO">Colombia</option>
+                            <option value="AR">Argentina</option>
+                            <option value="ES">España</option>
+                            <option value="ECL">Chile</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Extra Information</legend>
+                    
+                    <div class="campo">
+                        <label for="cliente">Client</label>
+                        <input id="cliente" type="radio" name="tipo" value="cliente"/>
+                    </div>
+
+                    <div class="campo">
+                        <label for="proveedor">Provider</label>
+                        <input id="proveedor" type="radio" name="tipo" value="proveedor"/>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="categoria">Service of interest</label>
+                        <input list="categorias" name="categorias">
+                        <datalist id="categorias">
+                            <option value="Investments">
+                            <option value="Savings Accounts">
+                            <option value="Retirement Accounts">
+                        </datalist>
+                    </div>
+
+                </fieldset>
+                <input class="btn" type="submit" value="Enviar Formulario">
+            </form>
+        </section>
 
         <footer>
             <div class="footer-nav">
@@ -39,13 +148,6 @@
                     <ul>
                         <li><a href="#">Carrers</a></li>
                         <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li><a href="#">Helps desk</a></li>
-                        <li><a href="#">Knowledge base</a></li>
-                        <li><a href="#">Live Chat</a></li>
                     </ul>
                 </div>
                 <div>
