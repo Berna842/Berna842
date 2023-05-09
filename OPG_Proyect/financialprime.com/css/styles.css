@@ -236,7 +236,9 @@ a{
 /** Formulario **/
 
 .contact{
+    font-size: 2rem;
     padding-top: 2rem;
+    border-top: 1px solid var(--primario);
 }
 
 .formulario{
@@ -273,4 +275,28 @@ a{
     flex: 1;
     border: 1px solid #e1e1e1;
     padding: 1rem;
+}
+
+/** Footer **/
+
+footer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    border-top: 1px solid var(--primario);
+}
+
+.footer-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer-nav a{
+    display: block;
+}
+
+footer p{
+    text-align: center;
+    font-size: 1.5rem;
 }
