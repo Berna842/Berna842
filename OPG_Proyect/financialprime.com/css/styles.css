@@ -266,6 +266,13 @@ p{
 
 .about-container .btn{
     grid-column: 2/3;
+    height: 35%;
+}
+
+@media (max-width: 1770px) {
+    .about-container .btn{
+        height:  100%;
+    }
 }
 
 /** Formulario **/
@@ -284,12 +291,23 @@ p{
     column-gap: 2rem;
 }
 
+@media (max-width: 768px) {
+    .formulario{
+        display: inline;
+        grid-template-columns: unset;
+        column-gap: 0rem;
+    }
+}
+
 .formulario fieldset{
     border: 1px solid black;
     margin-bottom: 2rem;
 }
 
-fieldset:nth-child(3){
+fieldset:nth-last-child(4){
+    grid-column: 1/3;
+}
+form .btn{
     grid-column: 1/3;
 }
 
