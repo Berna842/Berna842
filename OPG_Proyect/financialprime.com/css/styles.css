@@ -360,3 +360,42 @@ footer p{
     text-align: center;
     font-size: 1.5rem;
 }
+
+/** Blog CSS **/
+
+aside ul{
+    list-style: none;
+}
+
+.blog-container{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.blogs-content{
+    padding: 5rem;
+    width: 75%;
+}
+
+.blog-container aside{
+    width: 25%;
+}
+
+.btn-blog{
+    background-color: var(--secundario);
+    display: block;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 900;
+    padding: 1rem;
+    transition: background-color .3s ease-out;
+    text-align: center;
+    border: none;
+    width: 20%;
+}
+
+.list-menu li{
+    padding: 2rem 0rem;
+}
+
