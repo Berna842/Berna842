@@ -162,6 +162,7 @@ p{
     margin-top: 2rem;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
+    align-items: center;
 }
 
 @media (min-width: 900px) {
@@ -178,6 +179,7 @@ p{
 }
 
 .principal-img img{
+    align-self: center;
     width: 100%;
     object-fit: cover;
     border-radius: 2rem;
@@ -255,6 +257,7 @@ p{
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     margin-bottom: 2rem;
+    align-items: center;
 }
 
 .about-content img{
