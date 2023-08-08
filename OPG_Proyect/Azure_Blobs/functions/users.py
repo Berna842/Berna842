@@ -19,7 +19,7 @@ def rol_validation(cur, user, enterprise):
 
 def user_list_all(cur):
     cur.execute('SELECT * from public.users;')
-    return {"User": user, "Users": cur.fetchall(), "Enterprise": enterprise}
+    return {"Users": cur.fetchall()}
 
 def user_list_my(cur, user):
     cur.execute("SELECT guid_enterprise, rol from public.roles where guid_user='"+user+"';")
@@ -49,40 +49,14 @@ def create_user(cur, email, scope, guid):
         else:
             return {"Message": "Ambit wrong"}
         
-def disable_user(cur, user, enterprise, guid):
-    if user == guid:
-        cur.execute("UPDATE public.users SET status = false where guid='"+user+"'")
-        success = cur.rowcount
-        if(success == 1):
-            return {"Message": "Your user has been disabled success"}
-        else:
-            return {"Message": "Your user hasn't disable"}
+def change_user_status(cur, user, status):
+    cur.execute("UPDATE public.users SET status = "+str(status).capitalize() +" where guid='"+user+"'")
+    success = cur.rowcount
+    if(success == 1):
+        return {"Message": "The status change to "+str(status)}
     else:
-        try:
-            rol = rol_validation(cur, user, enterprise)
-            if rol != "Disable":
-                if (rol != "Admin" and enterprise != "en1-BI") or (rol !="owner" and enterprise != "en1-BI"):
-                    return {"Access": "Denied, you have no access."}
-                else:
-                    cur.execute("Select * from public.users where guid='"+guid+"'")
-                    exist = cur.fetchone()
-                    try:
-                        if exist:
-                            cur.execute("UPDATE public.users SET status = false where guid='"+guid+"'")
-                            success = cur.rowcount
-                            if(success == 1):
-                                return {"Message": "The user has been disabled success"}
-                            else:
-                                return {"Message": "The user hasn't disable"}
-                        else:
-                            return {"Message": "The user that you're trying to disable doesn't exist"}    
-                    except:
-                        return {"Message": "The user that you're trying to disable doesn't exist"}
-            else:
-                return {"Message" : "The user is disable, please verify the status with an administrator"}
-        except:
-            return {"Message": "Something goes wrong please contact with the technical support"}
-
+        return {"Message": "Your user hasn't disable"}
+    
 def search_user(cur, guid):
     try:
         cur.execute("SELECT email, name, surname, status FROM public.users where guid='"+guid+"'")
@@ -90,7 +64,7 @@ def search_user(cur, guid):
         if res[3] == True:
             return {"User searched": res}
         else:
-            return {"User searched": "Is Disabled"}
+            return {"User": "Is Disabled"}
     except:
         return {"Message": "Error user don't exist or it's wrong"}
     
@@ -106,10 +80,9 @@ def update_user(cur, user, args):
             for i in args:
                 if(i != ""):
                     helper = helper + i.split(":")[0] + "='" + i.split(":")[1] + "'"
-                if(j < (len(args)-2) ):
-                    helper = helper + ", "
-                    j=j+1
-                
+                    if(j < (len(args)-2) ):
+                        helper = helper + ", "
+                        j=j+1 
             query = query+helper+" where guid='"+user+"'"
             cur.execute(query)
             resp = cur.rowcount
@@ -120,24 +93,11 @@ def update_user(cur, user, args):
     except:
         return {"Message":"Error the user can't be updated please contact the Administrator"}
 
-def delete_user(cur, user, enterprise, guid):
-    try: 
-        rol = rol_validation(cur, user, enterprise)
-        if rol != "Disable":
-            if (rol != "Admin" and enterprise != "en1-BI") or (rol !="owner" and enterprise != "en1-BI"):
-                    return {"Access": "Denied, you have no access."}
-            else:
-                if guid:
-                    cur.execute("DELETE FROM public.users WHERE guid='"+guid+"'")
-                    statement = cur.rowcount
-                    if statement == 1:
-                        cur.execute("DELETE FROM public.roles WHERE guid_user='"+guid+"'")
-                        return {"Message": "The user has been deleted"}
-                    else:
-                        return {"Message": "Something goes wrong please contact with the technical support"}
-                else: 
-                    return {"Message": "It can't be execute because you need to specify the user to delete."}
-        else:
-            return {"Message" : "The user is disable, please verify the status with an administrator"}
-    except:
-        return {"Message": "What are you trying to do?, we are going to report this situation to an administrator"}
+def delete_user(cur, guid):
+    cur.execute("DELETE FROM public.users WHERE guid='"+guid+"'")
+    statement = cur.rowcount
+    if statement == 1:
+        cur.execute("DELETE FROM public.roles WHERE guid_user='"+guid+"'")
+        return {"Message": "The user has been deleted"}
+    else:
+        return {"Message": "Something goes wrong please contact with the technical support"}
