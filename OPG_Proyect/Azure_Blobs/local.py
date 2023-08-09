@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status, Response
 import classes.definition as cls
 import functions.blobs as blobs
 import functions.users as users
@@ -7,42 +7,42 @@ import DBs.conn as con
 
 app = FastAPI()
 
-@app.get("/users/")
-async def list_all_users():
-    return users.user_list_all(con.conn.cursor())
+@app.get("/users/", status_code=200)
+async def list_all_users(response: Response):
+    return users.user_list_all(con.conn.cursor(), response)
 
-@app.get("/users/my_user")
-async def display_user(user: str):
-    return users.user_list_my(con.conn.cursor(), user)
+@app.get("/users/my_user", status_code=200)
+async def display_user(user: str, response: Response):
+    return users.user_list_my(con.conn.cursor(), user, response)
 
-@app.put("/users/my_user")
-async def update_user(user: str, args: str):
-    msg = users.update_user(con.conn.cursor(), user, args)
+@app.put("/users/my_user", status_code=200)
+async def update_user(user: str, args: str, response: Response):
+    msg = users.update_user(con.conn.cursor(), user, args, response)
     con.conn.commit()
     return msg
 
-@app.delete("/users/my_user")
-async def delete_user(guid: str):
-    msg = users.delete_user(con.conn.cursor(), guid)
+@app.delete("/users/my_user", status_code=200)
+async def delete_user(guid: str, response: Response):
+    msg = users.delete_user(con.conn.cursor(), guid, response)
     con.conn.commit()
     return msg
 
-@app.put("/users/status")
-async def change_user_status(user:str, status: bool):
-    msg = users.change_user_status(con.conn.cursor(), user, status)
+@app.put("/users/status", status_code=200)
+async def change_user_status(user:str, status: bool, response: Response):
+    msg = users.change_user_status(con.conn.cursor(), user, status, response)
     con.conn.commit()
     return msg
 
 
-@app.post("/users/new")
-async def create_user(email:str, scope:str, guid:str|None=None):
-    msg = users.create_user(con.conn.cursor(), email, scope, guid)
+@app.post("/users/new", status_code=201)
+async def create_user(email:str, scope:str, response: Response, guid:str|None=None):
+    msg = users.create_user(con.conn.cursor(), email, scope, guid, response)
     con.conn.commit()
     return msg   
 
-@app.get("/users/look")
-def read_item(guid:str):
-    return users.search_user(con.conn.cursor(), guid)
+@app.get("/users/look", status_code=200)
+def search_user(guid:str, response:Response):
+    return users.search_user(con.conn.cursor(), guid, response)
 
 
 #Listar documentos un documento en especifico: 
